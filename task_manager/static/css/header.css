@@ -1,0 +1,70 @@
+/* header.css 
+header {
+    background-color: rgb(31, 30, 24);
+    height: 70px;
+    width: 100%;
+    color: rgb(138, 28, 28);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+
+}*/
+
+.head {
+    background-color: rgb(66, 63, 44);
+    box-sizing: border-box;
+    width: 100vw;
+    height: 70px;
+    color: rgb(138, 28, 28);
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    position: relative;
+    left: calc(-50px);
+    right: 0;
+    padding: 10px 20px;
+}
+
+ 
+
+.head nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.head nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+
+.head nav ul li {
+    align-content: center;
+    margin-right: 35px;
+    justify-items: center;
+}
+
+
+nav ul li a {
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    color: darkgoldenrod;
+}
+
+.register {
+    margin-left: auto;
+}

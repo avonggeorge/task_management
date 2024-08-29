@@ -1,0 +1,13 @@
+/* footer.css */
+footer {
+    background-color: rgb(57, 55, 42);
+    height: 60px;
+    width: 100%;
+    box-sizing: border-box;
+    border-top: 1px solid #ceabab;
+    text-align: center;
+    color: rgb(137, 111, 65);
+    padding-top: 10px;
+    position: sta;
+    bottom: 0;
+}

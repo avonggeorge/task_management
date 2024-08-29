@@ -1,0 +1,94 @@
+/* common.css */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
+body {
+    background-color: #af7c0f;
+    max-width: calc(100% - 100px);
+    margin: 0 50px;
+    height: auto;
+}
+
+img {
+    float: right;
+    border: 1px dotted black;
+    margin: 0px 20px 15px 20px;
+    border-radius: 10px;
+  }
+
+.container {
+    position: relative;
+    /*overflow: hidden;
+    width: 100%;
+    padding-top: 55%; */
+}
+  
+
+/*.demo-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+}*/
+
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 21%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(105, 87, 87, 0.1);
+    text-align: center;
+}
+
+.auth-forms {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.auth-forms form {
+    width: 45%;
+}
+
+.auth-forms h2 {
+    margin-bottom: 10px;
+}
+
+.auth-forms input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.auth-forms button {
+    width: 100%;
+}
+
+.blue-btn {
+    background-color: #242b34;
+    color: rgb(221, 221, 85);
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.blue-btn:hover {
+    background-color: #0056b3;
+}
