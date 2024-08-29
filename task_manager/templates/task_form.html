@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Form</title>
+    <style>
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script>
+        function addRow() {
+            // Get input values
+            var item = document.getElementById("item").value;
+            var description = document.getElementById("description").value;
+            var location = document.getElementById("location").value;
+            var date = document.getElementById("date").value;
+            var status = document.getElementById("status").value;
+            var note = document.getElementById("note").value;
+
+            // Create a new row
+            var table = document.getElementById("dataTable");
+            var newRow = table.insertRow();
+
+            // Insert cells and set their values
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+            var cell5 = newRow.insertCell(4);
+            var cell6 = newRow.insertCell(5);
+            var cell7 = newRow.insertCell(6); // Action cell
+
+            cell1.innerHTML = item;
+            cell2.innerHTML = description;
+            cell3.innerHTML = location;
+            cell4.innerHTML = date;
+            cell5.innerHTML = status;
+            cell6.innerHTML = note;
+
+            // Create Update Button
+            var updateButton = document.createElement("button");
+            updateButton.innerHTML = "Update";
+            updateButton.onclick = function() {
+                updateRow(newRow);
+            };
+            cell7.appendChild(updateButton);
+
+            // Create Delete Button
+            var deleteButton = document.createElement("button");
+            deleteButton.innerHTML = "Delete";
+            deleteButton.onclick = function() {
+                deleteRow(newRow);
+            };
+            cell7.appendChild(deleteButton);
+
+            // Clear input fields
+            document.getElementById("item").value = "";
+            document.getElementById("description").value = "";
+            document.getElementById("location").value = "";
+            document.getElementById("date").value = "";
+            document.getElementById("status").value = "";
+            document.getElementById("note").value = "";
+        }
+
+        function deleteRow(row) {
+            // Remove the row from the table
+            row.parentNode.removeChild(row);
+        }
+
+        function updateRow(row) {
+            // Get current values
+            var cells = row.getElementsByTagName("td");
+            var item = cells[0].innerHTML;
+            var description = cells[1].innerHTML;
+            var location = cells[2].innerHTML;
+            var date = cells[3].innerHTML;
+            var status = cells[4].innerHTML;
+            var note = cells[5].innerHTML;
+
+            // Prompt user for new values
+            var newItem = prompt("Update Item Name:", item);
+            var newDescription = prompt("Update Description:", description);
+            var newLocation = prompt("Update Location:", location);
+            var newDate = prompt("Update Date:", date);
+            var newStatus = prompt("Update Status:", status);
+            var newNote = prompt("Update Note:", note);
+
+            // Update the cells with new values
+            if (newItem !== null) cells[0].innerHTML = newItem;
+            if (newDescription !== null) cells[1].innerHTML = newDescription;
+            if (newLocation !== null) cells[2].innerHTML = newLocation;
+            if (newDate !== null) cells[3].innerHTML = newDate;
+            if (newStatus !== null) cells[4].innerHTML = newStatus;
+            if (newNote !== null) cells[5].innerHTML = newNote;
+        }
+    </script>
+</head>
+<body>
+
+<h2>Add a New Task to the Table</h2>
+<input type="text" id="item" placeholder="Item Name" required>
+<input type="text" id="description" placeholder="Description" required>
+<input type="text" id="location" placeholder="Location" required>
+<input type="date" id="date" placeholder="Due Date" required>
+<input type="text" id="status" placeholder="Status" required>
+<input type="text" id="note" placeholder="Note" required>
+<button onclick="addRow()">Add Item</button>
+
+<table>
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Note</th>
+            <th>Action</th> <!-- New Action Header -->
+        </tr>
+    </thead>
+    <tbody id="dataTable">
+        <!-- Dynamic rows will be added here -->
+    </tbody>
+</table>
+
+</body>
+</html>
