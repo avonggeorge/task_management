@@ -8,6 +8,9 @@ footer {
     text-align: center;
     color: rgb(137, 111, 65);
     padding-top: 10px;
-    position: sta;
+    margin-bottom: 0;
+    position: obsolete;
     bottom: 0;
+    left: 0;
+    right: 0;
 }
