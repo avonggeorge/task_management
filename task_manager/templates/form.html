@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Form</title>
-    <style>
-        table {
-            width: 60%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+{% extends "base.html" %}
+{% block title %}Todos{% endblock %}
+
+
+{% block content %}
+
     <script>
         function addRow() {
             // Get input values
@@ -106,34 +91,53 @@
             if (newNote !== null) cells[5].innerHTML = newNote;
         }
     </script>
-</head>
-<body>
+
 
 <h2>Add a New Task to the Table</h2>
-<input type="text" id="item" placeholder="Item Name" required>
-<input type="text" id="description" placeholder="Description" required>
-<input type="text" id="location" placeholder="Location" required>
-<input type="date" id="date" placeholder="Due Date" required>
-<input type="text" id="status" placeholder="Status" required>
-<input type="text" id="note" placeholder="Note" required>
-<button onclick="addRow()">Add Item</button>
+<div>
+    <label for="item">Item Name</label>
+    <input type="text" id="item" placeholder="Enter item name" required> <br>
 
-<table>
-    <thead>
-        <tr>
-            <th>Item</th>
-            <th>Description</th>
-            <th>Location</th>
-            <th>Due Date</th>
-            <th>Status</th>
-            <th>Note</th>
-            <th>Action</th> <!-- New Action Header -->
-        </tr>
-    </thead>
-    <tbody id="dataTable">
-        <!-- Dynamic rows will be added here -->
-    </tbody>
-</table>
+    <label for="description">Description</label>
+    <input type="text" id="description" placeholder="Enter description" required> <br>
 
-</body>
-</html>
+    <label for="location">Location</label>
+    <input type="text" id="location" placeholder="Enter location" required> <br>
+    
+    <label for="date">Due Date</label>
+    <input type="date" id="date" placeholder="Due date" required> <br>
+    
+    <label for="status">Status</label>  <!-- New Status Label -->
+    <select id="status">
+        <option value="select" selected>Select Status</option>
+        <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
+        <option value="working-on-it">Working on it</option>
+    </select> <br>
+    
+    <label for="note">Note</label> <!-- New Note Label -->
+    <input type="text" id="note" placeholder="Write some notes" required> <br>
+    
+    <button onclick="addRow()">Create Task</button> <br>
+</div>
+
+<div class="form">
+    <h2>Task List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Description</th>
+                <th>Location</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Note</th>
+                <th>Action</th> <!-- New Action Header -->
+            </tr>
+        </thead>
+        <tbody id="dataTable">
+            <!-- Dynamic rows will be added here -->
+        </tbody>
+    </table>
+</div>
+{% endblock %}

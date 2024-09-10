@@ -3,6 +3,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    scroll-behavior: smooth;
 }
 
 
@@ -91,6 +92,7 @@ img {
     text-align: center;
     display: flex;
     flex-direction: column;
+    flex: 1;
     align-items: center;
     justify-content: center;
 }
@@ -128,6 +130,7 @@ img {
     align-items: center;
     justify-content: center;
     text-align: center;
+    font-size: 22px;
 }
 
 .tech {
@@ -217,4 +220,31 @@ img {
     align-items: center;
     flex-wrap: wrap;
     font-size: 40px;
+}
+
+
+/* Style the Flashed messages */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: relative;
+}
+.alert-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
 }

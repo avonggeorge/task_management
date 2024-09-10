@@ -1,0 +1,28 @@
+class Notes(db.Models)
+    id = db.Column(db.Integer, primary_key=True)  
+    title = db.Column(db.String(80), nullable=False)  
+    content = db.Column(db.Text, nullable=True)  
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+
+
+given that:
+
+Here's a breakdown of these components:
+
+id: This defines a column named id.
+
+db.Column: This is a class that defines a column in a database table.
+db.Integer: This specifies the type of the column. Here, id is an integer.
+primary_key=True: This designates this column as the primary key, which uniquely identifies each record in the table.
+title: Another column in the table.
+
+db.String(80): This defines a column that stores strings with a maximum length of 80 characters.
+nullable=False: This means that this column cannot be null; it must contain a value when a Notes record is created.
+content: A column for holding the note's content.
+
+db.Text: This specifies that the column can contain a large amount of text.
+nullable=True: This allows the column to be null, meaning a note can exist without any content.
+created_at: A column for tracking when the note was created.
+
+db.DateTime: This indicates that the column will store date and time values.
+default=db.func.current_timestamp(): This sets the default value for this column to the current timestamp when a record is created.
