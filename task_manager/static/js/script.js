@@ -1,54 +1,56 @@
-function addRow() {  
-    // Get input values  
-    var item = document.getElementById("item").value;  
-    var description = document.getElementById("description").value;  
-    var location = document.getElementById("location").value;
-    var date = document.getElementById("date").value;
-    var status = document.getElementById("status").value;
-    var note = document.getElementById("note").value;
-    
+// API to delete task
+function deleteTodo(todoId) {
+    fetch(`/delete/${todoId}`, {
+        method: 'POST',  // Match the Python route expecting POST
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Task deleted successfully!');
+            // Remove the task row from the DOM (optional for smooth transition)
+            document.getElementById(`task-${todoId}`).remove();
+        } else {
+            console.error('Failed to delete task.');
+        }
+    });
+}
 
-    // Create a new row  
-    var table = document.getElementById("dataTable");  
-    var newRow = table.insertRow();  
+// API to update tasks
+function updateTodo(todoId) {
+    // Get the updated values from the form or modal
+    const updatedItem = prompt("Enter new item:");
+    const updatedDescription = prompt("Enter new description:");
+    const updatedLocation = prompt("Enter new location:");
+    const updatedNotes = prompt("Enter new notes:");
+    const updatedStatus = prompt("Enter new status:");
+    const updatedDate = prompt("Enter new date (YYYY-MM-DD):");
 
-    // Insert cells and set their values  
-    var cell1 = newRow.insertCell(0);  
-    var cell2 = newRow.insertCell(1);  
-    var cell3 = newRow.insertCell(2);
-    var cell4 = newRow.insertCell(3);
-    var cell5 = newRow.insertCell(4);
-    var cell6 = newRow.insertCell(5);
-    var cell7 = newRow.insertCell(6); // Action cell
+    fetch(`/update/${todoId}`, {
+        method: 'POST',  // Using POST since the Flask route accepts it
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            item: updatedItem,
+            description: updatedDescription,
+            location: updatedLocation,
+            notes: updatedNotes,
+            status: updatedStatus,
+            date: updatedDate
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Task updated successfully!');
+            // Optionally, update the UI with the new values without a full page reload
+            document.getElementById(`task-item-${todoId}`).textContent = updatedItem;
+            document.getElementById(`task-description-${todoId}`).textContent = updatedDescription;
+            // Add similar updates for location, notes, status, date
+        } else {
+            console.error('Failed to update task.');
+        }
+    });
+}
 
-    cell1.innerHTML = item;  
-    cell2.innerHTML = description;  
-    cell3.innerHTML = location;
-    cell4.innerHTML = date;
-    cell5.innerHTML = status;
-    cell6.innerHTML = note;
-
-    // Create update button
-    var updateButton = document.createElement("button");
-    updateButton.innerHTML = "Update";
-    updateButton.onclick = function() {
-        updateRow(newRow);
-    };
-    cell7.appendChild(updateButton);
-
-    // Create delete button
-    var deleteButton = document.createElement("button");
-    deleteButton.innerHTML = "delete";
-    deleteButton.onclick = function() {
-        deleteRow(newRow);
-    };
-    cell7.appendChild(deleteButton)
-
-    // Clear input fields  
-    document.getElementById("item").value = "";  
-    document.getElementById("description").value = "";  
-    document.getElementById("location").value = "";
-    document.getElementById("date").value = "";
-    document.getElementById("status").value = "";
-    document.getElementById("note").value = "";
-} 
